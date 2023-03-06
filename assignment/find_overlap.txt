@@ -1,0 +1,32 @@
+This program determines if two genomic loci are overlapped or not.
+The program create a function called find_overlap, which takes in two genomic loci as inputs.
+The loci are in the format of "chr:start-end".
+The function first parses the input loci and checks if they are in correct format.
+If the inputs are in correct format, the function will check if they are on the same chromosome and if they are overlapped.
+The function returns False if the two loci are not overlapped, returns True if they are overlapped.
+
+1. Create an exception class with a message attribute: InvalidInputError. It is raised when the loci inputs are not valid. 
+      Error message:'Error: The locus inputs are not found. An example of the locus inputs: "chr1:1-100".'
+
+2. Creat a function: find_overlap, which takes two string arguments: locus_x and locus_y.
+
+      Split the locus_x and locus_y by ":". Assign the results in locus_x_coord and locus_y_coord respectively.
+      If the length of locus_x_coord or locus_y_coord is not equal to 2, 
+          raise InvalidInputError.
+      Otherwise, extract the chromosome information from locus_x_coord and locus_y_coord. Assign them in locus_x_chr and locus_y_chr respectively.
+      If locus_x_chr or locus_y_chr does not start with "chr", 
+          raise InvalidInputError.
+    
+      Split the locus_x_coord and locus_y_coord strings by "-". Assign the results in locus_x_pos and locus_y_pos respectively.
+      If the length of locus_x_pos or locus_y_pos is not equal to 2, 
+          raise InvalidInputError.
+      Otherwise, extract the start and stop positions from locus_x_pos and locus_y_pos. Assign them in locus_x_start, locus_y_start, locus_x_stop, and locus_y_stop respectively.
+      
+      If the locus_x_chr is not equal to locus_y_chr, 
+          return False.
+      Otherwise, assign the overlap_start as the maximum of locus_x_start and locus_y_start and assign overlap_end as the minimum of locus_x_stop and locus_y_stop respectively.
+      If overlap_start is less than or equal to overlap_end, 
+          return True.
+      Otherwise, 
+          return False.
+          
