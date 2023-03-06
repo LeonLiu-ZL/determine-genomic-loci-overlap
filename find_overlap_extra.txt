@@ -1,0 +1,35 @@
+This program define a class called ChrCoordinate with three attributes: chr, start, and stop.
+The class represents a chromosome locus. The class also define a method: find_overlap.
+The method takes in another ChrCoordinate as an argument, and determine if the two loci overlap.
+The method returns a dictionary containing information about whether the two loci overlapped,
+the start, end coordinates of the overlap region, as well as the width of the overlap region.  
+
+1. Create an exception class with a message attribute: InvalidChrError. It is raised when the chr parameters are not valid.
+        message: 'Error: chr was not found. An example of chr: "chr1".'.
+
+2. Create a class: ChrCoordinate:
+      The constructor method takes in three arguments: chr, start, and stop.
+          If chr is not a string, 
+              raise an InvalidChrError.
+          If chr does not start with "chr", 
+              raise an InvalidChrError.
+          If start and stop are not integers, 
+              raise a TypeError.
+          Assign chr, start, and stop as instance variables of the object.
+  
+      Create a method: find_overlap.  The method takes in an argument: coordinate.
+          If coordinate is not an instance of ChrCoordinate, 
+              raise a TypeError.
+        
+          Create a dictionary: overlap. Assign False to key "overlap", and None to keys "overlap starts at", "overlap ends at", and "overlap width".
+          If the two loci are not on the same chromosome, 
+              pass
+          Otherwise, check if the two loci overlapped by comparing the maximum of the two loci's starts and the minimum of the two loci's stop. 
+              If the maximum of the two loci's starts is smaller or equal to the minimum of the two loci's stops,
+                  Assign overlap["overlap"] to True.
+                  Assign overlap["overlap starts at"] to the maximum of self.start and coordinate.start.
+                  Assign overlap["overlap ends at"] to the minimum of self.stop and coordinate.stop.
+                  Assign overlap["overlap width"] to overlap["overlap ends at"] - overlap["overlap starts at"] + 1.
+  
+          Return overlap.
+  
